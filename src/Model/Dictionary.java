@@ -1,7 +1,7 @@
 
 package Model;
 
-
+// juhfciajaughghhju
 public class Dictionary {
     private Node head, prev = new Node(null);
     private Word word;

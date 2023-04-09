@@ -1,4 +1,4 @@
-package Model;
+package Controller.Exception;
 
 public class NoKeyException extends Exception {
 

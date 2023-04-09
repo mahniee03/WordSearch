@@ -1,20 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package wordsearch;
 
-/**
- *
- * @author Dell
- */
+import java.awt.event.*;
+import javax.swing.*;
+import Model.*;
+import View.*;
+import Controller.*;
+
 public class WordSearch {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        int textWidth = 80;
+        JFrame board = new View("F:\\Hoc Code cung Manh\\Project\\GameJava\\WordSearch\\0002.txt", "F:\\\\Hoc Code cung Manh\\\\Project\\\\GameJava\\\\WordSearch\\\\words.txt");
+        int buttonSize = ((View) board).getButtonSize();
+        int size = ((View) board).getBoardSize();
+        int width = Math.max(size * buttonSize + textWidth, 450);
+        board.setSize(width, (size + 1) * buttonSize + 56);
+        board.setLocationRelativeTo(null);
+        board.setVisible(true);
+
+        board.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent event) {
+                System.exit(0);
+            }
+        });
+
     }
-    
 }

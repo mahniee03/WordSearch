@@ -1,8 +1,10 @@
 
 package Model;
 
-// juhfciajaughghhju
-public class Dictionary {
+import Controller.Exception.NoKeyException;
+import Controller.Exception.DictionaryException;
+
+public class Dictionary implements DictionaryADT{
     private Node head, prev = new Node(null);
     private Word word;
     private Node dict[];
@@ -25,7 +27,7 @@ public class Dictionary {
 	Node prev = null;
 	this.word = word;
 
-	int index = word.getKey().charAt(0);
+	int index = function(word.getKey());
 
 	Node node = dict[index];
 
@@ -62,7 +64,7 @@ public class Dictionary {
 
     }
     public Word get(String inputWord) {
-	int index = inputWord.charAt(0);
+	int index = function(inputWord);
 	Node node;
 	node = dict[index];
         
@@ -76,7 +78,7 @@ public class Dictionary {
     }
 
     public Word remove(String inputWord) throws NoKeyException {
-	int index = inputWord.charAt(0);
+	int index = function(inputWord);
 	Node node = dict[index];
 	Node  prev = null;
 
@@ -102,5 +104,13 @@ public class Dictionary {
     public int size() {
 	return this.size;
     }
-
+    
+    private int function(String str) {
+	int h = 0, hash = 0;
+		// looping from 0 to the length of the string -1
+	for (int i = 0; i<str.length(); i++)
+            h = (31 * hash) + str.charAt(i);
+	hash = h % M;
+	return hash;
+	}
 }
